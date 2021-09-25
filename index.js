@@ -1,27 +1,29 @@
-  var readlineSync= require('readline-sync');
+ var readlineSync= require('readline-sync');
+  const chalk= require('chalk');
   var score=0;
-  var userName= readlineSync.question("HEY!!! Whats Your Name:) ");
-  console.log("WELCOME "+userName+"!!!");
+  var userName= readlineSync.question(chalk.rgb(255,255,0)("HEY!!! Whats Your Name:) "));
+
+  console.log(chalk.cyan.italic("WELCOME "+userName)+"!!!");
 
   function highscore(){
-    console.log("SUSMIT: 7");
-    console.log("ARIJIT: 5");
+    console.log(chalk.hex('#40E0D0')(("SUSMIT: 7")));
+    console.log(chalk.hex('#40E0D0')(("ARIJIT: 5")));
   }
 
   function play(question,answer){
     var userAns= readlineSync.question(question);
     
     if(userAns.toUpperCase()===answer.toUpperCase()){
-      console.log("Yes you are RIGHT!!!!");
+      console.log(chalk.rgb(64,255,64)("Yes you are RIGHT!!!!"));
       score = score + 1;
 
     }
     else{
-      console.log("Sorry you are WRONG!!!");
-      score = score - 1;
+      console.log(chalk.rgb(192,00,00)("Sorry you are WRONG!!!"));
+      score =score - 1;
       
     }
-    console.log("Your Current Score is: "+score);
+    console.log("Your Current Score is: "+chalk.rgb(199,21,133).bold(score));
     console.log("------------------------");
   
     
@@ -29,31 +31,31 @@
   }
 
   var Questions=[{
-    questions:"Where do I live?? ",
-    answer:"Kolkata",
+    questions:"The Professor’s first name is eventually revealed. What is it? ",
+    answer:"Sergio",
   },
   {
 
-    questions:"What is my fav food? ", 
-    answer:"Momos",
+    questions:"Before giving up on society and turning to a life of crime, what was Moscow’s occupation? ", 
+    answer:"Miner",
     },
     {
-    questions:"Who's is my fav football player? ",
-    answer:"Messi",
+    questions:"Who did Gandia lock up in the Bank’s panic room? ",
+    answer:"Tokyo",
   },
   {
-    questions:"What's my favourite movie? ",
-    answer:"Tamasha",
+    questions:"How were The Professor and Berlin related to each other? ",
+    answer:"Brothers",
   },
   {
-    questions:"Which game helped me to survive the lockdown? ",
-    answer:"Chess",
+    questions:"Where did the first Heist take place? ",
+    answer:"Royal Mint of Spain ",
   },
-  {questions:"Which is my dream destination to vist? ",
-  answer:"North Korea",},
+  {questions:"Where did Raquel find The Professor after the first heist? ",
+  answer:"Philippines",},
   {
-    questions:"Do I have any siblings? ",
-    answer:"No",
+    questions:"How many heists had the character Berlin performed before money heist's events? ",
+    answer:"27",
   },];
 
     
@@ -62,6 +64,6 @@
       var gameQues=Questions[i];
       play(gameQues.questions,gameQues.answer);
     }
-    console.log("Well Played!!! "+userName.toUpperCase()+" you scored "+score);
-    console.log("Check out the high scores, if you make it to the leaderboard, then ping me and I'll update it");
+    console.log(chalk.hex('#FF6040')("Well Played!!! "+userName.toUpperCase()+" you scored ")+chalk.rgb(199,21,133).bold(score));
+    console.log(chalk.hex('#D0B090')("Check out the high scores, if you make it to the leaderboard, then ping me and I'll update it."));
     console.log(highscore());
